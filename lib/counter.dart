@@ -17,11 +17,13 @@ class Counter {
   }
 
   Future<int> _readCount() async {
+    SharedPreferences.setMockInitialValues({});
     var prefs = await SharedPreferences.getInstance();
     return prefs.getInt('Counter.count') ?? 0;
   }
 
   Future<void> _writeCount(int count) async {
+    SharedPreferences.setMockInitialValues({});
     var prefs = await SharedPreferences.getInstance();
     return prefs.setInt('Counter.count', count);
   }

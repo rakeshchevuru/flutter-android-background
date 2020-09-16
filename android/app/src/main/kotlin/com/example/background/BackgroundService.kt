@@ -11,6 +11,8 @@ import io.flutter.view.FlutterCallbackInformation
 import io.flutter.view.FlutterMain
 import io.flutter.view.FlutterNativeView
 import io.flutter.view.FlutterRunArguments
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.embedding.engine.FlutterEngineCache
 
 class BackgroundService : Service(), LifecycleDetector.Listener {
 
@@ -58,7 +60,8 @@ class BackgroundService : Service(), LifecycleDetector.Listener {
 
         getCallbackInformation()?.let { flutterCallbackInformation ->
             flutterNativeView = FlutterNativeView(this, true).apply {
-                GeneratedPluginRegistrant.registerWith(pluginRegistry)
+
+                GeneratedPluginRegistrant.registerWith(FlutterEngineCache.getInstance().get("test")!!)
 
                 val args = FlutterRunArguments().apply {
                     bundlePath = FlutterMain.findAppBundlePath()

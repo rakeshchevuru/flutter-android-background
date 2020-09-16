@@ -13,7 +13,7 @@ void main() {
   var callbackHandle = PluginUtilities.getCallbackHandle(backgroundMain);
   channel.invokeMethod('startService', callbackHandle.toRawHandle());
 
-  CounterService().startCounting();
+  //CounterService().startCounting();
 }
 
 class MyApp extends StatelessWidget {
